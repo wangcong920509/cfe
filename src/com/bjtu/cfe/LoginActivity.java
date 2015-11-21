@@ -90,7 +90,7 @@ public class LoginActivity extends Activity {
     			else{
     				Toast.makeText(getApplicationContext(), "µÇÂ½ÐÅÏ¢´íÎó",3000).show();
     			}
-			} 
+			}
         	catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -134,6 +134,5 @@ public class LoginActivity extends Activity {
         
         inputStream.close();
         return result;
-        
     }
 }
