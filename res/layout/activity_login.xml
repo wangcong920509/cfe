@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8cd480"
+    android:orientation="vertical"
+    android:gravity="center" >
+            
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dimgrey" />
+    
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/first_bg"
+        android:adjustViewBounds="true" />
+            
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/dimgrey" />
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/default_round" >
+            
+            <EditText
+                android:id="@+id/login_id"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/text_round_none"
+                android:inputType="number"
+                android:lines="1"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:hint="@string/hint_id"
+                android:drawableLeft="@drawable/icon_id" />
+            
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/text_line" />
+            
+            <EditText
+                android:id="@+id/login_pw"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/text_round_none"
+                android:inputType="textPassword"
+                android:lines="1"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:hint="@string/hint_pw"
+                android:drawableLeft="@drawable/icon_pw" />
+            
+		</LinearLayout>
+		
+        <!--  
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:gravity="left" >
+            
+            <CheckBox
+                android:id="@+id/keep_pw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:text="@string/keep_pw" />
+
+            <CheckBox
+                android:id="@+id/auto_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:text="@string/auto_login" />
+            
+		</LinearLayout>
+		-->
+		
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center" >
+            
+            <Button
+                android:id="@+id/login_button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_selector"
+                android:textSize="15sp"
+                android:textColor="#000000"
+                android:text="@string/login" />
+            
+		</LinearLayout>
+    </LinearLayout>
+</LinearLayout>

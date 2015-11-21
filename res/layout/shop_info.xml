@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="15dp"
+    android:scrollbars="none" >
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/item_bg"
+        android:orientation="vertical"
+        android:padding="10dp" >
+        
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="16dp"
+            android:textColor="@color/dimgray"
+            android:drawableLeft="@drawable/icon_address"
+            android:drawablePadding="5dp"
+            android:text="@string/shop_address" />
+        
+        <TextView
+           	android:id="@+id/shop_address"
+           	android:layout_width="wrap_content"
+           	android:layout_height="wrap_content"
+           	android:paddingLeft="10dp"
+           	android:textSize="16dp"
+           	android:textColor="@color/text"
+           	android:text="@string/temp_address" />
+            
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal" >
+        
+        	<TextView
+            	android:layout_width="wrap_content"
+            	android:layout_height="wrap_content"
+            	android:gravity="center"
+            	android:textSize="16dp"
+            	android:textColor="@color/dimgray"
+            	android:drawableLeft="@drawable/icon_order"
+            	android:drawablePadding="5dp"
+            	android:text="@string/shop_name" />
+        
+        	<TextView
+            	android:id="@+id/shop_name"
+            	android:layout_width="wrap_content"
+            	android:layout_height="wrap_content"
+            	android:paddingLeft="10dp"
+            	android:textSize="16dp"
+            	android:textColor="@color/text"
+            	android:text="@string/temp_name" />
+            
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal" >
+        
+        	<TextView
+            	android:layout_width="wrap_content"
+            	android:layout_height="wrap_content"
+            	android:gravity="center"
+            	android:textSize="16dp"
+            	android:textColor="@color/dimgray"
+            	android:drawableLeft="@drawable/icon_tel"
+            	android:drawablePadding="5dp"
+            	android:text="@string/customer_tel" />
+        
+        	<TextView
+            	android:id="@+id/shop_tel"
+            	android:layout_width="wrap_content"
+            	android:layout_height="wrap_content"
+            	android:paddingLeft="10dp"
+            	android:textSize="16dp"
+            	android:textColor="@color/text"
+            	android:text="@string/temp_tel" />
+            
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal" >
+        
+        	<TextView
+            	android:layout_width="wrap_content"
+            	android:layout_height="wrap_content"
+            	android:gravity="center"
+            	android:textSize="16dp"
+            	android:textColor="@color/dimgray"
+            	android:drawableLeft="@drawable/icon_order"
+            	android:drawablePadding="5dp"
+            	android:text="@string/order_num" />
+        
+        	<TextView
+            	android:id="@+id/shop_num"
+            	android:layout_width="wrap_content"
+            	android:layout_height="wrap_content"
+            	android:paddingLeft="10dp"
+            	android:textSize="16dp"
+            	android:textColor="@color/text"
+            	android:text="@string/temp_order_num" />
+            
+        </LinearLayout>
+        
+    </LinearLayout>
+    
+</ScrollView>
