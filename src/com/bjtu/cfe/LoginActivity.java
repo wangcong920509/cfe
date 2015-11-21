@@ -13,10 +13,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.cfe.http.util.PreferenceUtil;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -83,6 +86,7 @@ public class LoginActivity extends Activity {
     			int state = jsonObject.getInt("state");
     			//0£ºµÇÂ¼Ê§°Ü£»1£ºµÇÂ½³É¹¦£»2£º²ÎÊýÈ±Ê§
     			if(state == 1){
+    				PreferenceUtil.putString(getBaseContext(), "phone", login_id.getText().toString());
     				Intent intent = new Intent(LoginActivity.this, TaskListActivity.class);
     				startActivity(intent);
     				finish();

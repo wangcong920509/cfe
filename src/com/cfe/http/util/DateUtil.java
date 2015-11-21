@@ -23,7 +23,7 @@ public class DateUtil {
 		if(flag !=0 || flag != 1){
 			return "";
 		}
-		if(flag < strList.length)
+		if(flag <= strList.length)
 			return strList[flag];
 		else 
 			return "";		

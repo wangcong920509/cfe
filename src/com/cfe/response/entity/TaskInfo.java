@@ -5,7 +5,7 @@ public class TaskInfo {
 	//{'time':时间,'desc':任务描述,'id':任务id}
 	private String time;
 	private String desc;
-	private int id;
+	private String id;
 	
 	public String getTime() {
 		return time;
@@ -19,10 +19,10 @@ public class TaskInfo {
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	

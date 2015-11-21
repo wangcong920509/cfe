@@ -120,10 +120,10 @@ public class DataTransfer {
 	 * @param y 纬度
 	 * @return 任务列表
 	 */
-	public static ResponseGetAllTasks getAllTasks(String phone, double x, double y){		
+	public static ResponseGetAllTasks getAllTasks(String phone){		
 		List<TaskDTO> taskList = new ArrayList<TaskDTO>();
 		String path = "all_task/";
-		String param = "?phone="+phone+"&x="+x+"&y="+y;
+		String param = "?phone="+phone;
 		String url = pathCom + path + param;
 		
 		String result;

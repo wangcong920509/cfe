@@ -12,12 +12,12 @@
     <string name="login">登录</string>
     <string name="done_task">已完成任务</string>
     <string name="undone_task">待完成任务</string>
-    <string name="order_list">预约列表</string>
+    <string name="order_list">订单列表</string>
     <string name="title_temp">标题栏</string>
     <string name="get_meal_num">取餐商户</string>
     <string name="send_meal_num">送餐用户</string>
     <string name="position_num">途经地点</string>
-    <string name="task_num">订单数量</string>
+    <string name="task_num">任务ID:</string>
     <string name="tel">电话</string>
     <string name="address">地址</string>
     <string name="order">订单</string>

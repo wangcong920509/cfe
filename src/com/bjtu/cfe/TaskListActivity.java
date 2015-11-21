@@ -9,6 +9,7 @@ import com.cfe.common.model.dto.OrderDTO;
 import com.cfe.common.model.dto.TaskDTO;
 import com.cfe.http.util.DataTransfer;
 import com.cfe.http.util.DateUtil;
+import com.cfe.http.util.PreferenceUtil;
 import com.cfe.response.ResponseGetAllTasks;
 import com.cfe.response.entity.PositionInfo;
 
@@ -27,6 +28,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.View.OnClickListener;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
@@ -220,23 +222,23 @@ public class TaskListActivity extends Activity{
     private SimpleAdapter getDoneAdapter() {
     	
     	//测试例子-Start----------------------------------------
-		done_task_listData = new ArrayList<Map<String, String>>();
-
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("num", "4");
-		map.put("time", "12:00");
-		map.put("date", "2013-9-29");
-		done_task_listData.add(map);
-
-		map = new HashMap<String, String>();
-		map.put("num", "3");
-		map.put("time", "13:00");
-		map.put("date", "2013-9-29");
-		done_task_listData.add(map);
+//		done_task_listData = new ArrayList<Map<String, String>>();
+//
+//		Map<String, String> map = new HashMap<String, String>();
+//		map.put("num", "4");
+//		map.put("time", "12:00");
+//		map.put("date", "2013-9-29");
+//		done_task_listData.add(map);
+//
+//		map = new HashMap<String, String>();
+//		map.put("num", "3");
+//		map.put("time", "13:00");
+//		map.put("date", "2013-9-29");
+//		done_task_listData.add(map);
 		//测试例子-End-------------------------------------------
 
 		return new SimpleAdapter(TaskListActivity.this, done_task_listData,
-				R.layout.task_item, new String[] { "num", "time", "date"},
+				R.layout.task_item2, new String[] { "taskId", "time", "date"},
 				new int[] { R.id.task_num, R.id.task_time, R.id.task_date });
 	}
     
@@ -269,7 +271,11 @@ public class TaskListActivity extends Activity{
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id) {
 	    	Intent intent = new Intent(TaskListActivity.this, OrderListActivity.class);
-	    	intent.putExtra("position", position);
+	    	//View view2 = getc
+	    	//Adapter adapter = parent.getAdapter();
+	    	TextView tv = (TextView) view.findViewById(R.id.task_num);
+	    	String taskId = tv.getText().toString();
+	    	intent.putExtra("taskId", Integer.parseInt(taskId));
 	    	startActivity(intent);
 		}
     }
@@ -329,12 +335,12 @@ public class TaskListActivity extends Activity{
 			//Test-End----------------------------------------
 			
 			//测试
-			String phone = "23411413241";
-			double x = 160.004;
-			double y = 40.002;
+			String phone = PreferenceUtil.getString(mContext, "phone", "");//"34352132434";
+			//double x = 160.004;
+			//double y = 40.002;
 						
 			//2015-11-09-获得所有任务=待完成+已经完成
-			ResponseGetAllTasks rp = DataTransfer.getAllTasks(phone, x, y);
+			ResponseGetAllTasks rp = DataTransfer.getAllTasks(phone);
 					
 			return rp;
 		}
@@ -360,11 +366,12 @@ public class TaskListActivity extends Activity{
 				map = new HashMap<String, String>();
 
 				// 将任务信息添加到列表数据中
-				map.put("num", "5");	
-				String timeString = rp.getFinished().get(i).getTime();
-				map.put("time", DateUtil.splitStringDate(timeString, 0));
-				map.put("date", DateUtil.splitStringDate(timeString, 1));
-				undone_task_listData.add(map);			
+				map.put("taskId", rp.getFinished().get(i).getId());	
+				//String timeString = rp.getFinished().get(i).getTime();
+				//map.put("time", DateUtil.splitStringDate(timeString, 0));
+				map.put("time", rp.getFinished().get(i).getTime());
+				map.put("date", "");
+				done_task_listData.add(map);			
 			}
 			done_task_list.setAdapter(getDoneAdapter());
 			undone_task_list.setAdapter(getUndoneAdapter());

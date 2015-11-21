@@ -497,9 +497,11 @@ public final class R {
         public static final int top_button_rightpress=0x7f020027;
     }
     public static final class id {
-        public static final int another_title_button=0x7f08002f;
-        public static final int btn_accept_order=0x7f080033;
-        public static final int btn_finish=0x7f080032;
+        public static final int another_title_button=0x7f080034;
+        public static final int btn_accept_order=0x7f080038;
+        public static final int btn_finish=0x7f080037;
+        public static final int customer=0x7f08002c;
+        public static final int customerInfo=0x7f08001f;
         public static final int customer_address=0x7f080003;
         public static final int customer_bad=0x7f08000d;
         public static final int customer_best=0x7f08000b;
@@ -508,6 +510,7 @@ public final class R {
         public static final int customer_date=0x7f080007;
         public static final int customer_good=0x7f08000c;
         public static final int customer_group=0x7f08000a;
+        public static final int customer_icon=0x7f080020;
         public static final int customer_menu=0x7f080011;
         public static final int customer_menu_cash=0x7f080010;
         public static final int customer_menu_num=0x7f08000f;
@@ -515,10 +518,11 @@ public final class R {
         public static final int customer_num=0x7f080008;
         public static final int customer_tel=0x7f080005;
         public static final int customer_time=0x7f080006;
-        public static final int done_task_layout=0x7f08002a;
+        public static final int customer_type=0x7f080021;
+        public static final int done_task_layout=0x7f08002f;
         public static final int done_task_list=0x7f080012;
-        public static final int done_task_tab=0x7f08002b;
-        public static final int ic_map=0x7f080031;
+        public static final int done_task_tab=0x7f080030;
+        public static final int ic_map=0x7f080036;
         public static final int list_cash=0x7f080014;
         public static final int list_num=0x7f080013;
         public static final int login_button=0x7f080002;
@@ -527,29 +531,30 @@ public final class R {
         public static final int menu_cash=0x7f080017;
         public static final int menu_name=0x7f080015;
         public static final int menu_num=0x7f080016;
-        public static final int menu_settings=0x7f080034;
+        public static final int menu_settings=0x7f080039;
         public static final int order_address=0x7f08001c;
         public static final int order_icon=0x7f080018;
         public static final int order_info=0x7f08001b;
-        public static final int order_list=0x7f08001f;
+        public static final int order_list=0x7f080022;
         public static final int order_name=0x7f08001a;
         public static final int order_num=0x7f08001e;
         public static final int order_tel=0x7f08001d;
         public static final int order_type=0x7f080019;
-        public static final int shop_address=0x7f080020;
-        public static final int shop_menu=0x7f080024;
-        public static final int shop_name=0x7f080021;
-        public static final int shop_num=0x7f080023;
-        public static final int shop_tel=0x7f080022;
-        public static final int task_date=0x7f080027;
-        public static final int task_num=0x7f080025;
-        public static final int task_pager=0x7f08002c;
-        public static final int task_time=0x7f080026;
-        public static final int title_button=0x7f08002e;
-        public static final int title_text=0x7f08002d;
-        public static final int undone_task_layout=0x7f080028;
-        public static final int undone_task_list=0x7f080030;
-        public static final int undone_task_tab=0x7f080029;
+        public static final int resturant=0x7f08002b;
+        public static final int shop_address=0x7f080023;
+        public static final int shop_menu=0x7f080027;
+        public static final int shop_name=0x7f080024;
+        public static final int shop_num=0x7f080026;
+        public static final int shop_tel=0x7f080025;
+        public static final int task_date=0x7f08002a;
+        public static final int task_num=0x7f080028;
+        public static final int task_pager=0x7f080031;
+        public static final int task_time=0x7f080029;
+        public static final int title_button=0x7f080033;
+        public static final int title_text=0x7f080032;
+        public static final int undone_task_layout=0x7f08002d;
+        public static final int undone_task_list=0x7f080035;
+        public static final int undone_task_tab=0x7f08002e;
     }
     public static final class layout {
         public static final int activity_login=0x7f030000;
@@ -559,14 +564,17 @@ public final class R {
         public static final int list_item=0x7f030004;
         public static final int menu_item=0x7f030005;
         public static final int order_item=0x7f030006;
-        public static final int order_list=0x7f030007;
-        public static final int shop_info=0x7f030008;
-        public static final int shop_menu=0x7f030009;
-        public static final int task_item=0x7f03000a;
-        public static final int task_list=0x7f03000b;
-        public static final int title=0x7f03000c;
-        public static final int undone_task=0x7f03000d;
-        public static final int undone_task2=0x7f03000e;
+        public static final int order_item2=0x7f030007;
+        public static final int order_list=0x7f030008;
+        public static final int shop_info=0x7f030009;
+        public static final int shop_menu=0x7f03000a;
+        public static final int task_item=0x7f03000b;
+        public static final int task_item2=0x7f03000c;
+        public static final int task_item_rc=0x7f03000d;
+        public static final int task_list=0x7f03000e;
+        public static final int title=0x7f03000f;
+        public static final int undone_task=0x7f030010;
+        public static final int undone_task2=0x7f030011;
     }
     public static final class menu {
         public static final int activity_login=0x7f070000;

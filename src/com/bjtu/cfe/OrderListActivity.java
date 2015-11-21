@@ -12,6 +12,10 @@ import com.cfe.common.model.dto.RestaurantDTO;
 import com.cfe.common.model.dto.TaskDTO;
 import com.cfe.http.util.DataTransfer;
 import com.cfe.http.util.TestInfo;
+import com.cfe.response.ResponseGetFinishedTask;
+import com.cfe.response.entity.CustomerInfo;
+import com.cfe.response.entity.OrderInfo;
+import com.cfe.response.entity.RestaurantInfo;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -40,7 +44,9 @@ public class OrderListActivity extends Activity {
 	private ArrayList<Map<String, Object>> order_listData;
 	public LinearLayout a;
 	
-	private List<OrderDTO> orders;
+	//private LinearLayout 
+	
+	//private List<OrderDTO> orders;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -51,11 +57,11 @@ public class OrderListActivity extends Activity {
         title = (TextView) findViewById(R.id.title_text);
         backspace = (Button) findViewById(R.id.title_button);
         
-        title.setText("任务流程");
+        title.setText("任务详情");
         backspace.setOnClickListener(new BackListener());
 
         Intent intent = getIntent();
-        tkid = intent.getIntExtra("position", 0);
+        tkid = intent.getIntExtra("taskId", 0);
         
         order_list = (ListView) findViewById(R.id.order_list);
         
@@ -69,8 +75,8 @@ public class OrderListActivity extends Activity {
 	private SimpleAdapter getAdapter() {
 
 		return new SimpleAdapter(OrderListActivity.this, order_listData,
-				R.layout.order_item, new String[] { "order_icon", "order_type", "order_name", "order_address", "order_tel", "order_num" },
-				new int[] { R.id.order_icon, R.id.order_type, R.id.order_name, R.id.order_address, R.id.order_tel, R.id.order_num });
+				R.layout.order_item2, new String[] { "order_icon", "order_type", "order_name", "order_address", "order_tel", "customer_icon", "customer_type", "customer_name","customer_address","customer_tel"},
+				new int[] { R.id.order_icon, R.id.order_type, R.id.order_name, R.id.order_address, R.id.order_tel,R.id.customer_icon, R.id.customer_type, R.id.customer_name,R.id.customer_address,R.id.customer_tel});
 	}
 	
 	class OrderListListener implements OnItemClickListener
@@ -124,7 +130,7 @@ public class OrderListActivity extends Activity {
 		}
     }
     
-    private class Task extends AsyncTask<String, Integer, List<OrderDTO>> {
+    private class Task extends AsyncTask<String, Integer, ResponseGetFinishedTask> {
 
     	Context mContext;
     	ProgressDialog mProgressDialog;
@@ -144,65 +150,93 @@ public class OrderListActivity extends Activity {
     	}
 
 		@Override
-		protected List<OrderDTO> doInBackground(String... params) {
+		protected ResponseGetFinishedTask doInBackground(String... params) {
 			// TODO Auto-generated method stub
 			// TurUserBO user = DataTransfer.login(params[0], params[1]);
 			
 			//TODO
 			//请求订单列表
-			//orders = DataTransfer.getOrderDTO(String.valueOf(DataTransfer.getTask("2").get(tkid).getTkid()));
+			ResponseGetFinishedTask rp = DataTransfer.getFinishedTask(tkid);
 			
 			//Test-Start--------------
-			orders = (new TestInfo()).testOrders();
+			//orders = (new TestInfo()).testOrders();
 			//Test-End--------------
 			
-			return orders;
+			return rp;
 		}
 				
 		@Override
-		protected void onPostExecute(List<OrderDTO> orders)
+		protected void onPostExecute(ResponseGetFinishedTask rp)
 		{
 			mProgressDialog.dismiss();
 			order_listData = new ArrayList<Map<String, Object>>();
+			
+			if(rp.getState() == 0)
+				return;
+			
 			int i, j;
 			Map<String, Object> map;
-			String temp;
-			boolean first;
-			
-			//TODO
-			for (i = 0;i < orders.size();i++)
-			{
+			for(i=0; i<rp.getOrders().size(); i++){
 				map = new HashMap<String, Object>();
-				first = true;
-				for (j = 0;j < order_listData.size();j++)
-				{
-					if (orders.get(i).getRid().getName().equals(order_listData.get(j).get("order_name")))
-					{
-						temp = (String) order_listData.get(j).get("order_num");
-						temp = temp + "\n" + orders.get(i).getOid();
-						order_listData.get(j).put("order_num", temp);
-						first = false;
-					}
-				}
-				if (first)
-				{
-					map.put("order_icon", R.drawable.icon_get);
-					map.put("order_type", "取餐商户");
-					map.put("order_name", orders.get(i).getRid().getName());
-					map.put("order_address", orders.get(i).getRid().getAddress());
-					map.put("order_tel", orders.get(i).getRid().getPhone());
-					map.put("order_num", String.valueOf(orders.get(i).getOid()));
-					order_listData.add(map);
-					map = new HashMap<String, Object>();
-				}
-				map.put("order_icon", R.drawable.icon_send);
-				map.put("order_type", "送餐客户");
-				map.put("order_name", orders.get(i).getCid().getName());
-				map.put("order_address", orders.get(i).getCid().getAddress());
-				map.put("order_tel", orders.get(i).getCid().getPhone());
-				map.put("order_num", String.valueOf(orders.get(i).getOid()));
+				
+				//商户
+				RestaurantInfo restaurantInfo = rp.getOrders().get(i).getRestaurant();
+				map.put("order_icon", R.drawable.icon_get);
+				map.put("order_type", "取餐商户");
+				map.put("order_name", restaurantInfo.getName());//orders.get(i).getRid().getName());
+				map.put("order_address", restaurantInfo.getAddress());
+				map.put("order_tel", restaurantInfo.getPhone());
+				
+				//客户
+				CustomerInfo customerInfo = rp.getOrders().get(i).getCustomer();
+				map.put("customer_icon", R.drawable.icon_get);
+				map.put("customer_type", "订餐客户");
+				map.put("customer_name", customerInfo.getName());
+				map.put("customer_address", customerInfo.getAddress());//customer_tel
+				map.put("customer_tel", customerInfo.getPhone());
+				
+				//map.put("order_num", String.valueOf(orders.get(i).getOid()));
 				order_listData.add(map);
+				
 			}
+			
+//			String temp;
+//			boolean first;
+//			
+//			//TODO
+//			for (i = 0;i < orders.size();i++)
+//			{
+//				map = new HashMap<String, Object>();
+//				first = true;
+//				for (j = 0;j < order_listData.size();j++)
+//				{
+//					if (orders.get(i).getRid().getName().equals(order_listData.get(j).get("order_name")))
+//					{
+//						temp = (String) order_listData.get(j).get("order_num");
+//						temp = temp + "\n" + orders.get(i).getOid();
+//						order_listData.get(j).put("order_num", temp);
+//						first = false;
+//					}
+//				}
+//				if (first)
+//				{
+//					map.put("order_icon", R.drawable.icon_get);
+//					map.put("order_type", "取餐商户");
+//					map.put("order_name", orders.get(i).getRid().getName());
+//					map.put("order_address", orders.get(i).getRid().getAddress());
+//					map.put("order_tel", orders.get(i).getRid().getPhone());
+//					map.put("order_num", String.valueOf(orders.get(i).getOid()));
+//					order_listData.add(map);
+//					map = new HashMap<String, Object>();
+//				}
+//				map.put("order_icon", R.drawable.icon_send);
+//				map.put("order_type", "送餐客户");
+//				map.put("order_name", orders.get(i).getCid().getName());
+//				map.put("order_address", orders.get(i).getCid().getAddress());
+//				map.put("order_tel", orders.get(i).getCid().getPhone());
+//				map.put("order_num", String.valueOf(orders.get(i).getOid()));
+//				order_listData.add(map);
+//			}
 			order_list.setAdapter(getAdapter());
 		}
 	}
