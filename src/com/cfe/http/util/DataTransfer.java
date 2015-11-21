@@ -19,6 +19,7 @@ import com.cfe.common.model.dto.TaskDTO;
 import com.cfe.response.ResponseFinishCurrent;
 import com.cfe.response.ResponseGetAllTasks;
 import com.cfe.response.ResponseGetFinishedTask;
+import com.cfe.response.ResponseNewTask;
 import com.cfe.response.entity.TaskInfo;
 
 public class DataTransfer {
@@ -32,7 +33,7 @@ public class DataTransfer {
 		
 	}
 	
-	//20151105-µÇÂ¼
+	//20151105-ç™»å½•
 	public static boolean login(String phone, String pass){
 		String login_path = "login/";		
 		String url = pathCom + login_path;
@@ -43,10 +44,10 @@ public class DataTransfer {
 		String result;
 		try {
 			result = HttpUtils.doGet(url,encode);
-			//ÑéÖ¤´¦Àíresult½á¹û
+			//éªŒè¯å¤„ç†resultç»“æœ
 			JSONObject jsonObject = new JSONObject(result);
 			int state = jsonObject.getInt("state");
-			//0£ºµÇÂ¼Ê§°Ü£»1£ºµÇÂ½³É¹¦£»2£º²ÎÊıÈ±Ê§
+			//0ï¼šç™»å½•å¤±è´¥ï¼›1ï¼šç™»é™†æˆåŠŸï¼›2ï¼šå‚æ•°ç¼ºå¤±
 			switch(state){
 			case 0:
 				//return false;
@@ -69,7 +70,7 @@ public class DataTransfer {
 		return 	isLogin;	
 	}
 
-	//20151112-½áÊøµ±Ç°ÈÎÎñ
+	//20151112-ç»“æŸå½“å‰ä»»åŠ¡
 	//http://166.111.81.196:8078/finish_current/
 	public static ResponseFinishCurrent finishCurrent(String phone){
 		String path = "finish_current/";
@@ -90,7 +91,7 @@ public class DataTransfer {
 		return response;
 	}
 	
-	//2015112-»ñµÃÖ¸¶¨IDµÄtaskÖĞorderÁĞ±í
+	//2015112-è·å¾—æŒ‡å®šIDçš„taskä¸­orderåˆ—è¡¨
 	//http://166.111.81.196:8078/finished_task/
 	public static ResponseGetFinishedTask getFinishedTask(int taskid){
 		String path = "finished_task/";
@@ -111,13 +112,13 @@ public class DataTransfer {
 		return response;
 	}
 	
-	//20151108-»ñÈ¡ËùÓĞÈÎÎñ
+	//20151108-è·å–æ‰€æœ‰ä»»åŠ¡
 	/**
 	 * 
-	 * @param phone ËÍ²ÍÔ±ÊÖ»úºÅ
-	 * @param x ¾­¶È
-	 * @param y Î³¶È
-	 * @return ÈÎÎñÁĞ±í
+	 * @param phone é€é¤å‘˜æ‰‹æœºå·
+	 * @param x ç»åº¦
+	 * @param y çº¬åº¦
+	 * @return ä»»åŠ¡åˆ—è¡¨
 	 */
 	public static ResponseGetAllTasks getAllTasks(String phone, double x, double y){		
 		List<TaskDTO> taskList = new ArrayList<TaskDTO>();
@@ -146,6 +147,28 @@ public class DataTransfer {
 		} 
 		
 		return response;
+	}
+	
+
+	//20151121
+	//http://166.111.81.196:8078/new_task/ï»¿
+	public static ResponseNewTask getNewTask(String phone){
+		String path = "new_task/";
+		String param = "?phone="+phone;
+		String url = pathCom + path + param;
+		
+		String result;
+		ResponseNewTask response = new ResponseNewTask();
+		try {
+			result = HttpUtils.doGet(url, encode);
+			ObjectMapper mapper = new ObjectMapper();			
+			response = mapper.readValue(result, ResponseNewTask.class);	
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return response;		
 	}
 	
 	public static List<TaskDTO> getTask(String id) {
