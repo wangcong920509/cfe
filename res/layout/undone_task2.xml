@@ -10,11 +10,11 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
         
-        <ImageView 
+        <com.baidu.mapapi.map.MapView
             android:id="@+id/ic_map"
             android:layout_width="fill_parent"
-            android:layout_height="200dp"
-            android:src="@drawable/ic_map"/>
+            android:layout_height="476dp"
+            android:clickable="true" />
     </LinearLayout>
     
     <LinearLayout
