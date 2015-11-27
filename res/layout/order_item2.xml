@@ -113,6 +113,7 @@
                 android:textSize="16dp" />
         </LinearLayout>
 
+        <!--  
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -131,7 +132,7 @@
                 android:textColor="@color/dimgray"
                 android:textSize="16dp" />
 
-            <!--
+            
         <TextView
             android:id="@+id/order_num"
             android:layout_width="wrap_content"
@@ -140,8 +141,8 @@
             android:gravity="center"
             android:textSize="16dp"
             android:textColor="@color/text"
-            android:text="@string/temp_order_num" />-->
-        </LinearLayout>
+            android:text="@string/temp_order_num" />
+        </LinearLayout>-->
 
         <View
             android:layout_width="match_parent"

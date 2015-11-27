@@ -102,29 +102,29 @@ public class OrderListActivity extends Activity {
 			{
 		    	Map<String, Object> map = order_listData.get(position);
 		    	
-				if (((String) map.get("order_type")).equals("送餐客户"))
-				{
-			    	Intent intent = new Intent(OrderListActivity.this, CustomerInfoActivity.class);
+//				if (((String) map.get("order_type")).equals("送餐客户"))
+//				{
+//			    	Intent intent = new Intent(OrderListActivity.this, CustomerInfoActivity.class);
+////			    	intent.putExtra("name", (String) map.get("order_name"));
+////			    	intent.putExtra("address", (String) map.get("order_address"));
+////			    	intent.putExtra("tel", (String) map.get("order_tel"));
+////			    	intent.putExtra("num", (String) map.get("order_num"));
+////			    	intent.putExtra("time", (String) map.get("order_num"));
+////			    	intent.putExtra("cash", (String) map.get("order_num"));
+////			    	intent.p
+//			    	intent.putExtra("tkid", String.valueOf(tkid));
+//			    	intent.putExtra("oid", position);
+//			    	startActivity(intent);
+//				}
+//				else
+//				{
+//			    	Intent intent = new Intent(OrderListActivity.this, ShopInfoActivity.class);
 //			    	intent.putExtra("name", (String) map.get("order_name"));
 //			    	intent.putExtra("address", (String) map.get("order_address"));
 //			    	intent.putExtra("tel", (String) map.get("order_tel"));
 //			    	intent.putExtra("num", (String) map.get("order_num"));
-//			    	intent.putExtra("time", (String) map.get("order_num"));
-//			    	intent.putExtra("cash", (String) map.get("order_num"));
-//			    	intent.p
-			    	intent.putExtra("tkid", String.valueOf(tkid));
-			    	intent.putExtra("oid", position);
-			    	startActivity(intent);
-				}
-				else
-				{
-			    	Intent intent = new Intent(OrderListActivity.this, ShopInfoActivity.class);
-			    	intent.putExtra("name", (String) map.get("order_name"));
-			    	intent.putExtra("address", (String) map.get("order_address"));
-			    	intent.putExtra("tel", (String) map.get("order_tel"));
-			    	intent.putExtra("num", (String) map.get("order_num"));
-			    	startActivity(intent);
-				}
+//			    	startActivity(intent);
+//				}
 				
 			}
 		}
